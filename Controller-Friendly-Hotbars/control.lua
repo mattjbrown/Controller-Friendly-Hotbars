@@ -9,8 +9,9 @@ local function createOrUpdateBarPointer(currentQuickbarSlot, event)
 		guiElement = player.gui.screen["bar-pointer"]
 	end
 	
-	guiElement.style.left_padding = (.40 * player.display_resolution.width) + (40 * ((currentQuickbarSlot - 1) % 10))
-	guiElement.style.top_padding = .82 * player.display_resolution.height + (math.floor((currentQuickbarSlot - 1) / 10) * 60)
+	local xLocation = (.40 * player.display_resolution.width) + (40 * ((currentQuickbarSlot - 1) % 10))
+	local yLocation = .82 * player.display_resolution.height + (math.floor((currentQuickbarSlot - 1) / 10) * 60)
+	guiElement.location = {xLocation, yLocation}
 end
 
 
