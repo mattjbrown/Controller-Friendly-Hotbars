@@ -12,3 +12,10 @@ data:extend{
 		key_sequence = "PERIOD",
 	}
 }
+data:extend{
+	{
+		type = "custom-input",
+		name = "set-quickbar-from-cursor-stack",
+		key_sequence = "SLASH",
+	}
+}

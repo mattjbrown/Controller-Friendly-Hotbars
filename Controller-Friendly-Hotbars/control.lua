@@ -41,7 +41,6 @@ local function updateQuickbar(increasing, event)
 		
 		local itemType = player.get_quick_bar_slot(currentQuickbarSlot)
 		if itemType ~= nil then
-			player.print(itemType.name)
 			local inventoryStack = player.get_main_inventory().find_item_stack(itemType.name)
 			if inventoryStack ~= nil then
 				player.cursor_stack.swap_stack(inventoryStack)
@@ -58,4 +57,19 @@ end)
 
 script.on_event("previous-quickbar-hotkey", function(event) 
 	updateQuickbar(false, event)
+end)
+
+script.on_event("set-quickbar-from-cursor-item", function(event) 
+	local player = game.players[event.player_index]
+	local updatedQuickbar = false
+	local quickbarSlotToCheck = 0
+	
+	while not updatedQuickbar and quickbarSlotToCheck < 20 do
+		quickbarSlotToCheck = quickbarSlotToCheck + 1
+		local itemType = player.get_quick_bar_slot(currentQuickbarSlot)
+		if itemType == nil then
+			player.set_quick_bar_slot(quickbarSlotToCheck, player.cursor_stack)
+			updatedQuickbar = true
+		end
+	end
 end)
