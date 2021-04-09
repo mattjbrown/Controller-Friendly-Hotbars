@@ -19,3 +19,10 @@ data:extend{
 		key_sequence = "SLASH",
 	}
 }
+data:extend{
+	{
+		type = "custom-input",
+		name = "clear-current-quickbar-slot",
+		key_sequence = "BACKSLASH",
+	}
+}
